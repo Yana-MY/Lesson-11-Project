@@ -78,7 +78,7 @@ const view = {
 
     renderNotes(notes) {
         const list = document.querySelector('.list');
-        list.innerHTML = ''; // Очищаем список перед перерисовкой
+        list.innerHTML = ''; 
 
         if (notes.length === 0) {
             list.innerHTML = `
@@ -128,7 +128,7 @@ const view = {
             case 'purple':
                 return '#E77DF3';
             default:
-                return '#FFFFFF'; // Default color if none is selected
+                return '#FFFFFF'; 
         }
     },
 
@@ -139,8 +139,15 @@ const view = {
 
     updateFilterCheckbox() {
         const showFavoritesCheckbox = document.getElementById('show-favorites');
-        const hasFavoriteNotes = model.notes.some(note => note.isFavorite);
-        showFavoritesCheckbox.style.display = hasFavoriteNotes ? 'block' : 'none';
+        const hasFavoriteNotes = () => {
+            for (const note of model.notes) {
+                if (note.isFavorite) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        showFavoritesCheckbox.style.display = hasFavoriteNotes() ? 'block' : 'none';
     },
 
     displayMessage(message) {
@@ -156,24 +163,24 @@ const view = {
 const controller = {
     addNote(note, description, color) {
         model.addNote(note, description, color);
-        view.displayMessage('Заметка добавлена!'); // Сообщение об успешном добавлении
-        view.renderNotes(model.notes); // Обновляем отображение заметок
+        view.displayMessage('Заметка добавлена!'); 
+        view.renderNotes(model.notes); 
     },
 
     deleteNote(id) {
         console.log('Deleting note with ID:', id);
         model.deleteNote(id);
-        view.updateNoteCounter(); // Обновляем счетчик после удаления заметки
+        view.updateNoteCounter(); 
     },
 
     toggleFavorite(id) {
         console.log('Toggling favorite for note with ID:', id);
         model.toggleFavorite(id);
-        view.renderNotes(model.notes); // Обновляем отображение заметок
+        view.renderNotes(model.notes); 
     }
 };
 
-// Инициализация приложения
+
 function init() {
     view.init();
 }
