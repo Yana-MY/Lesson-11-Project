@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <img class="logo-notes" src="./images/📝Notes.png" alt="логотип заметок">
+                <div class="notes-counter">
+                    <img class="logo-img"  src="./images/notes.png" alt="иконка" style="width: 24px; height: 24px; vertical-align: middle;">
+                    <span class="total-notes">Всего заметок:&nbsp;</span>
+                    <span id="timer">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="card-form">
+                <form action="" class="form" name="notes">
+                    <div class="new-note-wrapper">
+                        <div class="name">
+                            <label class="label" for="note-title">Название заметки</label>
+                            <input id="note-title" class="note-title" type="text" placeholder="Напишите название новой заметки..." required maxlength="50">
+                        </div>
+
+                        <div class="block-wrapper">
+                            <div class="block-text">
+                                <label class="label" for="note-description">Описание новой заметки</label>
+                                <textarea id="note-description" class="note-description" placeholder="Напишите описание новой заметки..."></textarea>
+                            </div>
+                            <div class="bottons">
+                                <fieldset class="fieldset">
+                                    <legend class="label">Выберите цвет заметки</legend>
+                                    <ul class="radio-list">
+                                        <li>
+                                        <input checked class="radio" type="radio" name="color" value="yellow" aria-label="yellow" />
+                                        </li>
+                                        <li>
+                                        <input class="radio" type="radio" name="color" value="red" aria-label="red" />
+                                        </li>
+                                        <li>
+                                        <input class="radio" type="radio" name="color" value="green" aria-label="green" />
+                                        </li>
+                                        <li>
+                                        <input class="radio" type="radio" name="color" value="blue" aria-label="blue" />
+                                        </li>
+                                        <li>
+                                        <input class="radio" type="radio" name="color" value="purple" aria-label="purple" />
+                                        </li>
+                                    </ul>
+                                </fieldset>
+                                <button class="button-submit" type="submit">
+                                <img src="./images/plus-svgrepo-com-1.png" alt="иконка" style="width: 20px; height: 20px; vertical-align: middle;">
+                                Добавить заметку
+                                </button> 
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="filter-box">
+                <label for="show-favorites">Показать только избранные заметки</label>
+                <input type="checkbox" id="show-favorites">
+            </div>
+            <ul class="list">
+                <!-- Сюда будут рендерится заметки из JavaScript -->
+            </ul>
+            <div class="messages-box">
+                <!-- Сюда будут рендерится информационные сообщения из JavaScript -->
+            </div>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
